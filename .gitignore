@@ -1,0 +1,39 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.env
+.venv/
+venv/
+env/
+
+# ---- Logs ----
+*.log
+
+# ---- VS Code ----
+.vscode/
+.vscode-server/
+
+# ---- Docker ----
+*.tar
+docker-compose.override.yml
+
+# ---- Kubernetes / Helm ----
+*.tgz
+charts/
+values.local.yaml
+
+# ---- OS ----
+.DS_Store
+Thumbs.db
+
+# ---- Node (אם יש בעתיד) ----
+node_modules/
+
+# ---- Secrets ----
+*.pem
+*.key
+*.crt
+
+/k8s/postgresql/*

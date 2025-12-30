@@ -4,7 +4,7 @@
   <title>Login</title>
 </head>
 <body>
-  <h2>התחברות</h2>
+  <h2>log - bombo</h2>
 
   <form onsubmit="login(event)">
     <input id="username" placeholder="user name" required><br><br>
@@ -28,7 +28,7 @@
       });
 
       if (res.ok) {
-        window.location.href = "success.html";
+        window.location.href = "dashboard.html";
       } else {
         document.getElementById("error").innerText = "error in details";
       }

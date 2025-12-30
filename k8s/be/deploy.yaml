@@ -14,6 +14,15 @@ spec:
     spec:
       containers:
       - name: backend
-        image: 510491242343.dkr.ecr.us-east-1.amazonaws.com/bombo-086:backend
+        image: 510491242343.dkr.ecr.us-east-1.amazonaws.com/bombo-086:backendnew
         ports:
         - containerPort: 5000
+        env:
+          - name: DB_HOST
+            value: postgres-postgresql.pg.svc.cluster.local
+          - name: DB_NAME
+            value: appdb
+          - name: DB_USER
+            value: appuser
+          - name: DB_PASSWORD
+            value: apppassword

@@ -21,16 +21,22 @@
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
 
-      const res = await fetch("/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password })
-      });
+      try {
+        const res = await fetch("/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password })
+        });
 
-      if (res.ok) {
-        window.location.href = "dashboard.html";
-      } else {
-        document.getElementById("error").innerText = "error in details";
+        if (res.status === 200) {
+          window.location.href = "dashboard.html"; // רק אם הבק אישר
+        } else if (res.status === 401) {
+          document.getElementById("error").innerText = "user name or pass incorrect";
+        } else {
+          document.getElementById("error").innerText = "Server error, try later";
+        }
+      } catch (err) {
+        document.getElementById("error").innerText = "Server error, try later";
       }
     }
   </script>

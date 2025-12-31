@@ -1,18 +1,19 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, jsonify, render_template
 from db import get_connection
 
 app = Flask(__name__)
 
-# login screen
+# login page
 @app.route("/")
 def login_page():
     return render_template("login.html")
 
-# login
-@app.route("/login", methods=["POST"])
-def login():
-    username = request.form.get("username")
-    password = request.form.get("password")
+# API login route
+@app.route("/api/login", methods=["POST"])
+def api_login():
+    data = request.get_json()
+    username = data.get("username")
+    password = data.get("password")
 
     conn = get_connection()
     cur = conn.cursor()
@@ -25,13 +26,8 @@ def login():
     conn.close()
 
     if user:
-        return render_template("success.html")
-
-    return render_template("login.html", error="user name or pass incorrect")
+        return jsonify({"success": True}), 200
+    return jsonify({"success": False, "error": "Invalid credentials"}), 401
 
 if __name__ == "__main__":
-    app.run(
-        host="0.0.0.0",
-        port=5000,
-        debug=True
-    )
+    app.run(host="0.0.0.0", port=5000, debug=True)

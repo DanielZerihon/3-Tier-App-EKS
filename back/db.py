@@ -1,10 +1,11 @@
 import psycopg2
+import os
 
 def get_connection():
     return psycopg2.connect(
-        host="localhost",
+        host=os.environ["DB_HOST"],
         port=5432,
-        database="appdb",
-        user="appuser",
-        password="apppassword"
+        database=os.environ["DB_NAME"],
+        user=os.environ["DB_USER"],
+        password=os.environ["DB_PASSWORD"]
     )

@@ -37,3 +37,4 @@ node_modules/
 *.crt
 
 /k8s/postgresql/*
+ingress-nginx/*

@@ -9,7 +9,7 @@ def login_page():
     return render_template("login.html")
 
 # API login route
-@app.route("/api/login", methods=["POST"])
+@app.route("/login", methods=["POST"])
 def api_login():
     data = request.get_json()
     username = data.get("username")

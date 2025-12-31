@@ -29,7 +29,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: bombo-086
-        IMAGE_TAG: front-${{ github.sha }}
+        IMAGE_TAG: front-latest
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f front/Dockerfile front
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
@@ -39,7 +39,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: bombo-086
-        IMAGE_TAG: back-${{ github.sha }}
+        IMAGE_TAG: back-latest
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f back/Dockerfile back
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG

@@ -31,7 +31,7 @@ jobs:
         ECR_REPOSITORY: bombo-086
         IMAGE_TAG: front-${{ github.sha }}
       run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f 3-Tier-App-EKS/front/Dockerfile 3-Tier-App-EKS/front
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f front/Dockerfile front
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
     # Build & Push Backend
@@ -41,5 +41,5 @@ jobs:
         ECR_REPOSITORY: bombo-086
         IMAGE_TAG: back-${{ github.sha }}
       run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f 3-Tier-App-EKS/back/Dockerfile 3-Tier-App-EKS/back
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f back/Dockerfile back
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG

@@ -2,7 +2,7 @@ backend:
   replicaCount: 1
   image:
     repository: 510491242343.dkr.ecr.us-east-1.amazonaws.com/bombo-086
-    tag: backendnew
+    tag: back-latest
   port: 5000
   env:
     DB_HOST: postgres-postgresql.pg.svc.cluster.local
@@ -16,7 +16,7 @@ frontend:
   replicaCount: 1
   image:
     repository: 510491242343.dkr.ecr.us-east-1.amazonaws.com/bombo-086
-    tag: frontnew
+    tag: front-latest
   port: 80
   ingress:
     host: ""

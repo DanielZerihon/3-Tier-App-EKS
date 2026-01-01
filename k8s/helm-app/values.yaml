@@ -19,5 +19,5 @@ frontend:
     tag: front-latest
   port: 80
   ingress:
-    host: ""
+    host: front-app.local
     class: nginx

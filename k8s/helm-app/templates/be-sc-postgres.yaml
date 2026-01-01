@@ -25,9 +25,12 @@ spec:
           value: {{ .Values.backend.env.DB_USER }}
         - name: POSTGRES_PASSWORD
           value: {{ .Values.backend.env.DB_PASSWORD }}
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
         volumeMounts:
         - name: postgres-data
           mountPath: /var/lib/postgresql/data
+          subPath: pgdata
   volumeClaimTemplates:
   - metadata:
       name: postgres-data

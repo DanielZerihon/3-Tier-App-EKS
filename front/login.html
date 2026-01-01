@@ -29,7 +29,7 @@
         });
 
         if (res.status === 200) {
-          window.location.href = "dashboard.html"; // רק אם הבק אישר
+          window.location.href = "dashboard.html"; 
         } else if (res.status === 401) {
           document.getElementById("error").innerText = "user name or pass incorrect";
         } else {

@@ -1,17 +1,20 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: frontend-ingress
+  name: argocd-ingress
+  namespace: argocd
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   ingressClassName: nginx
   rules:
-  - host: {{ .Values.frontend.ingress.host }}
+  - host: argocd.local
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: frontend
+            name: argocd-server
             port:
-              number: {{ .Values.frontend.port }}
+              number: 80
